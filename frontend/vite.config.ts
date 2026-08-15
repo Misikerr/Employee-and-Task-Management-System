@@ -12,5 +12,9 @@ export default defineConfig({
         secure: false
       }
     }
+  },
+  build: {
+    outDir: '../backend/wwwroot',
+    emptyOutDir: true
   }
 })

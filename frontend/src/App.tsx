@@ -1,4 +1,5 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect } from 'react';
+import type { FormEvent } from 'react';
 
 // ── Inline Types (no external module needed) ──────────────────────────────────
 type Role = 'ADMIN' | 'MANAGER' | 'EMPLOYEE';
@@ -280,7 +281,7 @@ export default function App() {
         const projRes = await fetch('/api/projects', { headers });
         if (projRes.ok) {
           const projs: Project[] = await projRes.json();
-          setProjects(_ => projs);
+          setProjects(projs);
           const allTasks: TaskItem[] = [];
           for (const proj of projs) {
             const tRes = await fetch(`/api/tasks/by-project/${proj.id}`, { headers });
