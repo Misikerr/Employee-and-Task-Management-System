@@ -14,7 +14,7 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: '../backend/wwwroot',
+    outDir: 'dist',
     emptyOutDir: true
   }
 })
