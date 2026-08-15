@@ -56,9 +56,9 @@ dotnet run --urls "http://localhost:5000"
 > The API will run locally at `http://localhost:5000` and automatically create/seed `employee_task_mgmt.db`.
 
 ## Check Backend API Health
-```bash
+
 - [Check Backend Health](https://employee-and-task-management-system.onrender.com/api/health)
-```
+
 ### 2. Start the Frontend UI
 Open a second terminal window:
 ```bash
