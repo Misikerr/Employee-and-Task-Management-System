@@ -146,11 +146,13 @@ Employee-and-Task-Management-System/
 
 The backend automatically seeds the database with the following test accounts on first startup:
 
-| Role | Email | Password | Access Level |
-|---|---|---|---|
-| **ADMIN** | `admin@example.com` | `AdminPass123!` | Full system access |
-| **MANAGER** | `manager@example.com` | `ManagerPass123!` | Projects, tasks, staff view |
-| **EMPLOYEE** | `employee@example.com` | `EmployeePass123!` | Own tasks and comments |
+| Role | Name | Email | Password | Job Title |
+|---|---|---|---|---|
+| **ADMIN** | System Admin | `admin@example.com` | `AdminPass123!` | System Administrator |
+| **MANAGER** | Project Manager | `manager@example.com` | `ManagerPass123!` | Engineering Lead |
+| **EMPLOYEE** | Alex Rivera | `backend@example.com` | `EmployeePass123!` | Backend Developer |
+| **EMPLOYEE** | Sarah Chen | `frontend@example.com` | `EmployeePass123!` | Frontend Developer |
+| **EMPLOYEE** | David Kim | `mobile@example.com` | `EmployeePass123!` | Application Developer |
 
 ---
 
