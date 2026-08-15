@@ -1,32 +1,35 @@
-# React + TypeScript + Vite
+# 💻 Frontend UI — Task Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Modern, responsive web application built with **React 18**, **TypeScript**, **Vite**, and **Glassmorphism Vanilla CSS**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🎨 UI Highlights & Modules
 
-## React Compiler
+1. **Dashboard Overview**: Summary counters for active projects, assigned tasks, completed items, and total staff.
+2. **User Administration**: Staff roster table with job roles (`Backend Developer`, `Frontend Developer`, `Application Developer`), departments, and system roles.
+3. **Share Credentials Modal**: Interactive card displaying generated employee email, password, and job title with a one-click copy button.
+4. **Task Management & Developer Roster**: Visual developer cards showing staff member ID, role, department, and task load. Task assignment dropdown with live assignee preview.
+5. **My Assignments (Employee View)**: Specialized task board for employees to update status and post progress comments.
+6. **My Profile & Security**: Self-service modal for employees to change their job role and update password.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Local Development
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+### Installation
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Run Dev Server
+```bash
+npm run dev
+```
+> Server runs locally at `http://localhost:5173`. Proxies `/api` calls to backend at `http://localhost:5000`.
+
+### Build for Production
+```bash
+npm run build
+```
+> Outputs production bundle to `dist/`.
