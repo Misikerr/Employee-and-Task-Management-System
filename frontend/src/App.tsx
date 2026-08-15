@@ -142,6 +142,7 @@ export default function App() {
   
   // Dashboard & Navigation state
   const [activeTab, setActiveTab] = useState('dashboard');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
   const [employees, setEmployees] = useState<User[]>([]); // EMPLOYEE-role users for task assignment
   const [departments, setDepartments] = useState<Department[]>([]);
@@ -853,11 +854,38 @@ export default function App() {
     inprogressTasks: tasks.filter(t => t.status === 'InProgress').length
   };
 
+  // Close sidebar helper (for mobile nav clicks)
+  const navTo = (tab: string) => {
+    setActiveTab(tab);
+    setSidebarOpen(false);
+  };
+
   // Main UI Shell
   return (
     <div className="app-container">
+      {/* Mobile top bar */}
+      <div className="mobile-topbar">
+        <div className="mobile-logo">
+          <div className="logo-badge" style={{ width: '32px', height: '32px', borderRadius: '8px', fontSize: '13px', marginBottom: 0 }}>TM</div>
+          <h2>Task Management</h2>
+        </div>
+        <button
+          className={`btn-hamburger ${sidebarOpen ? 'open' : ''}`}
+          onClick={() => setSidebarOpen(o => !o)}
+          aria-label="Toggle navigation"
+        >
+          <span /><span /><span />
+        </button>
+      </div>
+
+      {/* Mobile sidebar overlay */}
+      <div
+        className={`sidebar-overlay ${sidebarOpen ? 'open' : ''}`}
+        onClick={() => setSidebarOpen(false)}
+      />
+
       {/* Sidebar */}
-      <aside className="sidebar">
+      <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-logo">
           <div className="logo-badge" style={{ width: '32px', height: '32px', borderRadius: '8px', fontSize: '14px', marginBottom: 0 }}>TM</div>
           <h2>Task Management</h2>
@@ -866,7 +894,7 @@ export default function App() {
         <nav className="sidebar-nav">
           <button 
             className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}
-            onClick={() => setActiveTab('dashboard')}
+            onClick={() => navTo('dashboard')}
           >
             <Icons.Dashboard /> Dashboard
           </button>
@@ -876,13 +904,13 @@ export default function App() {
             <>
               <button 
                 className={`nav-item ${activeTab === 'users' ? 'active' : ''}`}
-                onClick={() => setActiveTab('users')}
+                onClick={() => navTo('users')}
               >
                 <Icons.Users /> Users
               </button>
               <button 
                 className={`nav-item ${activeTab === 'departments' ? 'active' : ''}`}
-                onClick={() => setActiveTab('departments')}
+                onClick={() => navTo('departments')}
               >
                 <Icons.Departments /> Departments
               </button>
@@ -894,13 +922,13 @@ export default function App() {
             <>
               <button 
                 className={`nav-item ${activeTab === 'projects' ? 'active' : ''}`}
-                onClick={() => setActiveTab('projects')}
+                onClick={() => navTo('projects')}
               >
                 <Icons.Projects /> Projects
               </button>
               <button 
                 className={`nav-item ${activeTab === 'tasks' ? 'active' : ''}`}
-                onClick={() => setActiveTab('tasks')}
+                onClick={() => navTo('tasks')}
               >
                 <Icons.Tasks /> Tasks
               </button>
@@ -911,7 +939,7 @@ export default function App() {
           {user.role === 'EMPLOYEE' && (
             <button 
               className={`nav-item ${activeTab === 'my-tasks' ? 'active' : ''}`}
-              onClick={() => setActiveTab('my-tasks')}
+              onClick={() => navTo('my-tasks')}
             >
               <Icons.Tasks /> My Tasks
             </button>
